@@ -1,0 +1,8 @@
+{
+  "vaultPath": "/path/to/your/vault",
+  "vaultName": "My Vault",
+  "inboxFolder": "Inbox",
+  "memoryFolder": "Notes",
+  "port": 3117,
+  "skipTags": ["clippings", "learning", "inbox", "transcript"]
+}

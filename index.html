@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obsiddy In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════
+       THEME: Terminal (default) — Dark
+       ═══════════════════════════════════════════ */
+    :root,
+    [data-style="terminal"] {
+      --font-body: 'IBM Plex Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      --font-size: 14px;
+      --bg-deep: #0a0a0c;
+      --bg-surface: #111114;
+      --bg-hover: #1a1a1f;
+      --accent: #f5a623;
+      --accent-dim: #c4841d;
+      --accent-glow: rgba(245, 166, 35, 0.15);
+      --accent-subtle: rgba(245, 166, 35, 0.06);
+      --accent-type-bg: rgba(245, 166, 35, 0.08);
+      --green: #39ff14;
+      --green-glow: rgba(57, 255, 20, 0.15);
+      --red: #ff3b30;
+      --text-primary: #e8e0d4;
+      --text-dim: #6b6560;
+      --text-muted: #3d3835;
+      --border: #2a2520;
+      --border-subtle: #1e1a17;
+      --vignette: rgba(0, 0, 0, 0.4);
+      --scanline: rgba(0, 0, 0, 0.03);
+      --radius: 4px;
+      --card-border-left: 2px solid var(--accent-dim);
+    }
+
+    /* Terminal — Light */
+    [data-style="terminal"][data-brightness="light"] {
+      --bg-deep: #f4f1ec;
+      --bg-surface: #ffffff;
+      --bg-hover: #ebe7e1;
+      --accent: #c4841d;
+      --accent-dim: #a06b15;
+      --accent-glow: rgba(196, 132, 29, 0.12);
+      --accent-subtle: rgba(196, 132, 29, 0.05);
+      --accent-type-bg: rgba(196, 132, 29, 0.08);
+      --green: #1a8a0e;
+      --green-glow: rgba(26, 138, 14, 0.12);
+      --red: #d42a20;
+      --text-primary: #1a1714;
+      --text-dim: #7a736c;
+      --text-muted: #b5ada5;
+      --border: #d6d0c8;
+      --border-subtle: #e3ded8;
+      --vignette: rgba(0, 0, 0, 0.06);
+      --scanline: rgba(0, 0, 0, 0.015);
+    }
+
+    /* ═══════════════════════════════════════════
+       THEME: Swiss — Dark
+       ═══════════════════════════════════════════ */
+    [data-style="swiss"] {
+      --font-body: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+      --font-size: 15px;
+      --bg-deep: #0f0f0f;
+      --bg-surface: #1a1a1a;
+      --bg-hover: #242424;
+      --accent: #e63946;
+      --accent-dim: #c0313d;
+      --accent-glow: rgba(230, 57, 70, 0.12);
+      --accent-subtle: rgba(230, 57, 70, 0.05);
+      --accent-type-bg: rgba(230, 57, 70, 0.08);
+      --green: #2ecc71;
+      --green-glow: rgba(46, 204, 113, 0.15);
+      --red: #e63946;
+      --text-primary: #f1f1f1;
+      --text-dim: #888888;
+      --text-muted: #444444;
+      --border: #2a2a2a;
+      --border-subtle: #222222;
+      --vignette: rgba(0, 0, 0, 0);
+      --scanline: rgba(0, 0, 0, 0);
+      --radius: 2px;
+      --card-border-left: 3px solid var(--accent);
+    }
+
+    /* Swiss — Light */
+    [data-style="swiss"][data-brightness="light"] {
+      --bg-deep: #ffffff;
+      --bg-surface: #fafafa;
+      --bg-hover: #f0f0f0;
+      --accent: #e63946;
+      --accent-dim: #c0313d;
+      --accent-glow: rgba(230, 57, 70, 0.08);
+      --accent-subtle: rgba(230, 57, 70, 0.04);
+      --accent-type-bg: rgba(230, 57, 70, 0.06);
+      --green: #27ae60;
+      --green-glow: rgba(39, 174, 96, 0.12);
+      --red: #e63946;
+      --text-primary: #111111;
+      --text-dim: #666666;
+      --text-muted: #bbbbbb;
+      --border: #e0e0e0;
+      --border-subtle: #eeeeee;
+      --vignette: rgba(0, 0, 0, 0);
+      --scanline: rgba(0, 0, 0, 0);
+    }
+
+    /* ═══════════════════════════════════════════
+       THEME: Editorial — Dark
+       ═══════════════════════════════════════════ */
+    [data-style="editorial"] {
+      --font-body: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-size: 16px;
+      --bg-deep: #12100e;
+      --bg-surface: #1c1916;
+      --bg-hover: #262220;
+      --accent: #c9a84c;
+      --accent-dim: #a88a3a;
+      --accent-glow: rgba(201, 168, 76, 0.12);
+      --accent-subtle: rgba(201, 168, 76, 0.05);
+      --accent-type-bg: rgba(201, 168, 76, 0.08);
+      --green: #7fb069;
+      --green-glow: rgba(127, 176, 105, 0.15);
+      --red: #c25450;
+      --text-primary: #e5ddd0;
+      --text-dim: #8a8078;
+      --text-muted: #4a4440;
+      --border: #302a24;
+      --border-subtle: #252018;
+      --vignette: rgba(0, 0, 0, 0.35);
+      --scanline: rgba(0, 0, 0, 0);
+      --radius: 3px;
+      --card-border-left: 2px solid var(--accent-dim);
+    }
+
+    /* Editorial — Light */
+    [data-style="editorial"][data-brightness="light"] {
+      --bg-deep: #faf7f2;
+      --bg-surface: #ffffff;
+      --bg-hover: #f2ede6;
+      --accent: #8b6914;
+      --accent-dim: #725610;
+      --accent-glow: rgba(139, 105, 20, 0.10);
+      --accent-subtle: rgba(139, 105, 20, 0.04);
+      --accent-type-bg: rgba(139, 105, 20, 0.06);
+      --green: #5a9444;
+      --green-glow: rgba(90, 148, 68, 0.12);
+      --red: #a63c38;
+      --text-primary: #2a2420;
+      --text-dim: #7a736c;
+      --text-muted: #c0b8ae;
+      --border: #d8d0c6;
+      --border-subtle: #e8e2da;
+      --vignette: rgba(0, 0, 0, 0.04);
+      --scanline: rgba(0, 0, 0, 0);
+    }
+
+    /* ═══════════════════════════════════════════
+       BASE STYLES
+       ═══════════════════════════════════════════ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--font-size);
+      line-height: 1.6;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* CRT scanline overlay — fades naturally for non-terminal themes via vars */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        var(--scanline) 2px, var(--scanline) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* CRT power-on flicker */
+    @keyframes crt-on {
+      0% { opacity: 0; filter: brightness(2); }
+      10% { opacity: 0.6; filter: brightness(1.5); }
+      20% { opacity: 0.3; }
+      30% { opacity: 0.8; filter: brightness(1.2); }
+      50% { opacity: 0.5; }
+      70% { opacity: 0.9; filter: brightness(1.05); }
+      100% { opacity: 1; filter: brightness(1); }
+    }
+
+    .container { animation: crt-on 0.6s ease-out; }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .stats {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      margin-right: 0.5rem;
+    }
+
+    /* Header buttons */
+    .header-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      padding: 0.25rem 0.55rem;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: all 0.2s;
+      text-transform: uppercase;
+    }
+
+    .header-btn:hover {
+      border-color: var(--accent-dim);
+      color: var(--accent-dim);
+    }
+
+    .header-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Main grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 2.5rem;
+      height: calc(100vh - 70px);
+      align-items: stretch;
+    }
+
+    @media (max-width: 900px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.5rem;
+        height: auto;
+      }
+    }
+
+    /* Left column: Capture */
+    .capture-section {
+      display: flex;
+      flex-direction: column;
+      padding-top: 1rem;
+    }
+
+    .capture-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+
+    .capture-textarea {
+      width: 100%;
+      flex: 1;
+      min-height: 200px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      padding: 1.2rem;
+      resize: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+
+    .capture-textarea::placeholder { color: var(--text-muted); }
+
+    .capture-textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-subtle);
+    }
+
+    .capture-controls {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+
+    .capture-title {
+      flex: 1;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      padding: 0.6rem 0.8rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .capture-title::placeholder { color: var(--text-muted); }
+    .capture-title:focus { border-color: var(--accent-dim); }
+
+    .btn-save {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.6rem 1.4rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-save:hover { background: var(--accent); color: var(--bg-deep); }
+    .btn-save.success { border-color: var(--green); color: var(--green); box-shadow: 0 0 12px var(--green-glow); }
+    .btn-save.error { border-color: var(--red); color: var(--red); }
+
+    .save-feedback {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+      height: 1.2rem;
+      transition: opacity 0.3s;
+    }
+
+    .save-feedback.visible { color: var(--green); }
+
+    .shortcut-hint {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+    }
+
+    .shortcut-hint kbd {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.1rem 0.35rem;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+    }
+
+    /* Right column: Memory explorer */
+    .memory-section {
+      display: flex;
+      flex-direction: column;
+      padding-top: 1rem;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .memory-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.2rem;
+    }
+
+    .memory-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .btn-refresh {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      padding: 0.35rem 0.8rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: all 0.2s;
+      text-transform: uppercase;
+    }
+
+    .btn-refresh:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+
+    .memory-search {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      padding: 0.7rem 1rem;
+      outline: none;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .memory-search::placeholder { color: var(--text-muted); }
+    .memory-search:focus { border-color: var(--accent-dim); box-shadow: 0 0 12px var(--accent-glow); }
+
+    .connecting-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .connecting-label .tag-name { color: var(--accent); }
+    .connecting-label .query-text { color: var(--accent); font-style: italic; }
+
+    /* Note cards */
+    .note-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+      overflow-y: auto;
+      min-height: 0;
+      padding-right: 0.25rem;
+    }
+
+    .note-cards::-webkit-scrollbar { width: 4px; }
+    .note-cards::-webkit-scrollbar-track { background: transparent; }
+    .note-cards::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .note-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-left: var(--card-border-left);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.3rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .note-card:hover {
+      background: var(--bg-hover);
+      border-left-color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-subtle);
+    }
+
+    .note-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      gap: 0.75rem;
+    }
+
+    .note-title { font-size: 0.9rem; font-weight: 500; color: var(--text-primary); line-height: 1.4; }
+
+    .note-type {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-dim);
+      background: var(--accent-type-bg);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .note-date { font-size: 0.65rem; color: var(--text-dim); margin-bottom: 0.5rem; }
+    .note-excerpt { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 0.6rem; }
+
+    .note-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+    .tag-pill {
+      font-size: 0.6rem;
+      color: var(--accent-dim);
+      border: 1px solid var(--border);
+      padding: 0.1rem 0.45rem;
+      border-radius: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .note-links { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.4rem; }
+
+    .link-pill {
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      border: 1px solid var(--border-subtle);
+      padding: 0.1rem 0.45rem;
+      border-radius: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .link-pill::before { content: '\u21D2 '; opacity: 0.5; }
+
+    /* Empty / Loading */
+    .empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-dim); font-size: 0.8rem; }
+
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      color: var(--accent-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* Subtle vignette */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 60%, var(--vignette) 100%);
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* Smooth transitions */
+    body, .capture-textarea, .capture-title, .memory-search,
+    .note-card, .btn-save, .btn-refresh, .header-btn, header {
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    /* ═══════════════════════════════════════════
+       QUICKLOOK OVERLAY
+       ═══════════════════════════════════════════ */
+    .quicklook-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.2s ease; cursor: pointer;
+    }
+
+    .quicklook-backdrop.visible { opacity: 1; }
+
+    .quicklook-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      border-radius: 6px;
+      width: 90%; max-width: 700px; max-height: 80vh;
+      display: flex; flex-direction: column;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.4), 0 0 80px var(--accent-glow);
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.2s ease;
+      cursor: default;
+    }
+
+    .quicklook-backdrop.visible .quicklook-panel { transform: scale(1) translateY(0); }
+
+    .quicklook-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 1.2rem 1.5rem 0.8rem;
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 1rem;
+    }
+
+    .quicklook-title { font-size: 1rem; font-weight: 500; color: var(--text-primary); line-height: 1.4; }
+
+    .quicklook-meta { display: flex; gap: 0.5rem; align-items: center; flex-shrink: 0; }
+
+    .quicklook-close {
+      background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+      font-family: var(--font-body); font-size: 0.65rem; padding: 0.2rem 0.6rem;
+      cursor: pointer; border-radius: var(--radius); transition: all 0.2s;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+
+    .quicklook-close:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+
+    .quicklook-body {
+      padding: 1.2rem 1.5rem; overflow-y: auto; flex: 1; min-height: 0;
+      font-size: 0.85rem; line-height: 1.8; color: var(--text-primary);
+    }
+
+    .quicklook-body::-webkit-scrollbar { width: 4px; }
+    .quicklook-body::-webkit-scrollbar-track { background: transparent; }
+    .quicklook-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .quicklook-body h1, .quicklook-body h2, .quicklook-body h3 { color: var(--accent); margin: 1.2em 0 0.4em; font-weight: 500; }
+    .quicklook-body h1 { font-size: 1.1rem; }
+    .quicklook-body h2 { font-size: 0.95rem; }
+    .quicklook-body h3 { font-size: 0.85rem; color: var(--accent-dim); }
+    .quicklook-body p { margin: 0.6em 0; }
+    .quicklook-body ul, .quicklook-body ol { padding-left: 1.5rem; margin: 0.5em 0; }
+    .quicklook-body li { margin: 0.25em 0; }
+    .quicklook-body blockquote { border-left: 2px solid var(--accent-dim); padding-left: 1rem; margin: 0.8em 0; color: var(--text-dim); font-style: italic; }
+    .quicklook-body code { background: var(--bg-hover); padding: 0.15em 0.4em; border-radius: 3px; font-size: 0.8rem; }
+    .quicklook-body pre { background: var(--bg-hover); padding: 0.8rem 1rem; border-radius: var(--radius); overflow-x: auto; margin: 0.8em 0; }
+    .quicklook-body pre code { background: none; padding: 0; }
+    .quicklook-body hr { border: none; border-top: 1px solid var(--border); margin: 1.2em 0; }
+    .quicklook-body a, .quicklook-body .wiki-link { color: var(--accent); text-decoration: none; }
+    .quicklook-body .wiki-link:hover { text-decoration: underline; }
+    .quicklook-body .highlight { background: var(--accent-glow); padding: 0.1em 0.2em; border-radius: 2px; }
+    .quicklook-body img { max-width: 100%; border-radius: var(--radius); margin: 0.5em 0; }
+
+    .quicklook-footer {
+      padding: 0.6rem 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex; gap: 0.35rem; flex-wrap: wrap;
+    }
+
+    .quicklook-loading {
+      padding: 3rem; text-align: center; color: var(--accent-dim);
+      font-size: 0.75rem; letter-spacing: 0.15em; animation: pulse 1.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo" id="logo">Obsiddy <span>In</span></div>
+      <div class="header-right">
+        <div class="stats" id="stats"></div>
+        <button class="header-btn" data-style-btn="terminal" onclick="setStyle('terminal')">terminal</button>
+        <button class="header-btn" data-style-btn="swiss" onclick="setStyle('swiss')">swiss</button>
+        <button class="header-btn" data-style-btn="editorial" onclick="setStyle('editorial')">editorial</button>
+        <button class="header-btn" id="brightness-toggle" onclick="toggleBrightness()">
+          <span id="brightness-icon">&#9789;</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <!-- Left: Quick Capture -->
+      <div class="capture-section">
+        <div class="capture-label">// quick capture</div>
+        <textarea
+          class="capture-textarea"
+          id="capture-text"
+          placeholder="what's on your mind..."
+          autofocus
+        ></textarea>
+        <div class="capture-controls">
+          <input type="text" class="capture-title" id="capture-title" placeholder="title (optional)">
+          <button class="btn-save" id="btn-save" onclick="saveCapture()">&gt; SAVE</button>
+        </div>
+        <div class="save-feedback" id="save-feedback"></div>
+        <div class="shortcut-hint">
+          <kbd>&#8984;</kbd> + <kbd>Enter</kbd> to save
+        </div>
+      </div>
+
+      <!-- Right: Memory Explorer -->
+      <div class="memory-section">
+        <div class="memory-header">
+          <div class="memory-label">// memory</div>
+          <button class="btn-refresh" onclick="loadMemories()">refresh</button>
+        </div>
+        <input type="text" class="memory-search" id="memory-search" placeholder="search memories...">
+        <div class="connecting-label" id="connecting-label"></div>
+        <div class="note-cards" id="note-cards">
+          <div class="loading">loading memories...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quicklook overlay -->
+  <div class="quicklook-backdrop" id="quicklook" onclick="closeQuicklook(event)">
+    <div class="quicklook-panel" onclick="event.stopPropagation()">
+      <div class="quicklook-header">
+        <div class="quicklook-title" id="quicklook-title"></div>
+        <div class="quicklook-meta">
+          <a class="quicklook-close" id="quicklook-obsidian" href="#" title="Open in Obsidian" style="color: var(--accent-dim);">open</a>
+          <button class="quicklook-close" onclick="closeQuicklook()">esc</button>
+        </div>
+      </div>
+      <div class="quicklook-body" id="quicklook-body">
+        <div class="quicklook-loading">loading...</div>
+      </div>
+      <div class="quicklook-footer" id="quicklook-footer"></div>
+    </div>
+  </div>
+
+  <script>
+    // --- Config (loaded from server) ---
+    let appConfig = { vaultName: 'Obsiddy In', inboxFolder: 'Inbox', memoryFolder: 'Notes' };
+
+    // --- Style + Brightness ---
+
+    function getStyle() { return localStorage.getItem('obsiddy-style') || 'terminal'; }
+    function getBrightness() { return localStorage.getItem('obsiddy-brightness') || 'dark'; }
+
+    function applyAppearance() {
+      const style = getStyle();
+      const brightness = getBrightness();
+      document.documentElement.setAttribute('data-style', style);
+      document.documentElement.setAttribute('data-brightness', brightness);
+
+      // Update style button highlights
+      document.querySelectorAll('[data-style-btn]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-style-btn') === style);
+      });
+
+      // Update brightness icon
+      const icon = document.getElementById('brightness-icon');
+      icon.innerHTML = brightness === 'light' ? '&#9790;' : '&#9789;';
+    }
+
+    function setStyle(style) {
+      localStorage.setItem('obsiddy-style', style);
+      applyAppearance();
+    }
+
+    function toggleBrightness() {
+      const next = getBrightness() === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('obsiddy-brightness', next);
+      applyAppearance();
+    }
+
+    // Apply immediately to prevent flash
+    (function() {
+      const s = localStorage.getItem('obsiddy-style') || 'terminal';
+      const b = localStorage.getItem('obsiddy-brightness') || 'dark';
+      document.documentElement.setAttribute('data-style', s);
+      document.documentElement.setAttribute('data-brightness', b);
+    })();
+
+    // --- API calls ---
+
+    async function fetchConfig() {
+      try {
+        const res = await fetch('/api/config');
+        return res.json();
+      } catch { return null; }
+    }
+
+    async function fetchMemories(query) {
+      const url = query ? `/api/memories?q=${encodeURIComponent(query)}` : '/api/memories';
+      const res = await fetch(url);
+      return res.json();
+    }
+
+    async function fetchStats() {
+      const res = await fetch('/api/stats');
+      return res.json();
+    }
+
+    // --- Render ---
+
+    function formatDate(dateStr) {
+      if (!dateStr) return null;
+      try {
+        const d = new Date(dateStr + 'T00:00:00');
+        return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+      } catch { return dateStr; }
+    }
+
+    function obsidianUrl(file) {
+      const name = file.replace(/\.md$/, '');
+      const folder = encodeURIComponent(appConfig.memoryFolder);
+      const vault = encodeURIComponent(appConfig.vaultName);
+      return `obsidian://open?vault=${vault}&file=${folder}%2F${encodeURIComponent(name)}`;
+    }
+
+    function renderCards(notes, connectingTag, query) {
+      const container = document.getElementById('note-cards');
+      const label = document.getElementById('connecting-label');
+
+      if (query) {
+        label.innerHTML = `results for "<span class="query-text">${escHtml(query)}</span>"`;
+      } else if (connectingTag) {
+        label.innerHTML = `memories linked by <span class="tag-name">#${escHtml(connectingTag)}</span>`;
+      } else {
+        label.innerHTML = 'random selections';
+      }
+
+      if (!notes || notes.length === 0) {
+        container.innerHTML = '<div class="empty-state">no memories found</div>';
+        return;
+      }
+
+      container.innerHTML = notes.map(note => {
+        const date = formatDate(note.date);
+        const tags = (note.tags || []).slice(0, 5).map(t =>
+          `<span class="tag-pill">#${escHtml(t)}</span>`
+        ).join('');
+        const links = (note.wikiLinks || []).slice(0, 3).map(l =>
+          `<span class="link-pill">${escHtml(l)}</span>`
+        ).join('');
+
+        return `
+          <div class="note-card" onclick="openQuicklook('${escAttr(note.file)}', '${escAttr(note.title)}', '${escAttr((note.tags || []).join(','))}')">
+            <div class="note-card-header">
+              <div class="note-title">${escHtml(note.title)}</div>
+              ${note.type ? `<div class="note-type">${escHtml(note.type)}</div>` : ''}
+            </div>
+            ${date ? `<div class="note-date">${date}</div>` : ''}
+            ${note.excerpt ? `<div class="note-excerpt">${escHtml(note.excerpt)}</div>` : ''}
+            <div class="note-tags">${tags}</div>
+            ${links ? `<div class="note-links">${links}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function escAttr(str) {
+      if (!str) return '';
+      return str.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    }
+
+    // --- Quicklook ---
+
+    function renderMarkdown(md) {
+      let html = escHtml(md);
+      html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+      html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+      html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+      html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+      html = html.replace(/==(.+?)==/g, '<span class="highlight">$1</span>');
+      html = html.replace(/\[\[([^\]|]+?)\|([^\]]+?)\]\]/g, '<span class="wiki-link">$2</span>');
+      html = html.replace(/\[\[([^\]]+?)\]\]/g, '<span class="wiki-link">$1</span>');
+      html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+      html = html.replace(/```[\s\S]*?\n([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+      html = html.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+      html = html.replace(/^---$/gm, '<hr>');
+      html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+      html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
+      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+      html = html.replace(/^(?!<[hupblo]|<li|<hr|<pre)(.+)$/gm, '<p>$1</p>');
+      html = html.replace(/<p>\s*<\/p>/g, '');
+      return html;
+    }
+
+    async function openQuicklook(file, title, tagsStr) {
+      const backdrop = document.getElementById('quicklook');
+      const titleEl = document.getElementById('quicklook-title');
+      const bodyEl = document.getElementById('quicklook-body');
+      const footerEl = document.getElementById('quicklook-footer');
+      const obsidianLink = document.getElementById('quicklook-obsidian');
+
+      titleEl.textContent = title;
+      obsidianLink.href = obsidianUrl(file);
+
+      const tags = tagsStr ? tagsStr.split(',').filter(Boolean) : [];
+      footerEl.innerHTML = tags.map(t =>
+        `<span class="tag-pill">#${escHtml(t)}</span>`
+      ).join('');
+
+      bodyEl.innerHTML = '<div class="quicklook-loading">loading...</div>';
+
+      backdrop.style.display = 'flex';
+      requestAnimationFrame(() => { backdrop.classList.add('visible'); });
+      document.body.style.overflow = 'hidden';
+
+      try {
+        const res = await fetch(`/api/note?file=${encodeURIComponent(file)}`);
+        const data = await res.json();
+        bodyEl.innerHTML = data.content ? renderMarkdown(data.content)
+          : '<div class="empty-state">could not load note</div>';
+      } catch (e) {
+        bodyEl.innerHTML = '<div class="empty-state">could not load note</div>';
+      }
+    }
+
+    function closeQuicklook(event) {
+      if (event && event.target !== event.currentTarget) return;
+      const backdrop = document.getElementById('quicklook');
+      backdrop.classList.remove('visible');
+      document.body.style.overflow = '';
+      setTimeout(() => { backdrop.style.display = 'none'; }, 200);
+    }
+
+    // --- Load memories ---
+
+    async function loadMemories(query) {
+      const container = document.getElementById('note-cards');
+      container.innerHTML = '<div class="loading">loading memories...</div>';
+      try {
+        const data = await fetchMemories(query || undefined);
+        renderCards(data.notes, data.connectingTag, data.query);
+      } catch (e) {
+        container.innerHTML = '<div class="empty-state">could not load memories</div>';
+      }
+    }
+
+    // --- Save capture ---
+
+    async function saveCapture() {
+      const textEl = document.getElementById('capture-text');
+      const titleEl = document.getElementById('capture-title');
+      const btnEl = document.getElementById('btn-save');
+      const feedbackEl = document.getElementById('save-feedback');
+
+      const content = textEl.value.trim();
+      if (!content) return;
+
+      btnEl.disabled = true;
+      btnEl.textContent = '...';
+
+      try {
+        const res = await fetch('/api/capture', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content, title: titleEl.value.trim() || undefined })
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          btnEl.classList.add('success');
+          btnEl.textContent = '\u2713 SAVED';
+          feedbackEl.textContent = `saved to ${appConfig.inboxFolder}/${result.file}`;
+          feedbackEl.classList.add('visible');
+          textEl.value = '';
+          titleEl.value = '';
+          setTimeout(() => { btnEl.classList.remove('success'); btnEl.textContent = '> SAVE'; btnEl.disabled = false; }, 2000);
+          setTimeout(() => { feedbackEl.textContent = ''; feedbackEl.classList.remove('visible'); }, 3000);
+        } else {
+          throw new Error(result.error || 'Save failed');
+        }
+      } catch (e) {
+        btnEl.classList.add('error');
+        btnEl.textContent = 'ERROR';
+        feedbackEl.textContent = e.message;
+        setTimeout(() => { btnEl.classList.remove('error'); btnEl.textContent = '> SAVE'; btnEl.disabled = false; }, 2000);
+      }
+    }
+
+    // --- Search debounce ---
+
+    let searchTimeout = null;
+    const searchInput = document.getElementById('memory-search');
+
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimeout);
+      const q = searchInput.value.trim();
+      searchTimeout = setTimeout(() => { loadMemories(q || undefined); }, 300);
+    });
+
+    // --- Keyboard shortcuts ---
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeQuicklook();
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); saveCapture(); }
+    });
+
+    // --- Init ---
+
+    async function init() {
+      applyAppearance();
+
+      // Load config from server
+      const cfg = await fetchConfig();
+      if (cfg) {
+        appConfig = cfg;
+        document.getElementById('logo').innerHTML = `${escHtml(cfg.vaultName.split(' ')[0])}<span>${escHtml(cfg.vaultName.split(' ').slice(1).join(' ') || '')}</span>`;
+        document.title = cfg.vaultName;
+      }
+
+      loadMemories();
+
+      try {
+        const stats = await fetchStats();
+        document.getElementById('stats').textContent =
+          `${stats.noteCount} notes \u00B7 ${stats.tagCount} tags`;
+      } catch {}
+    }
+
+    init();
+  </script>
+</body>
+</html>
