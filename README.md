@@ -38,7 +38,7 @@ YourVault/
 If you use git:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/obsiddy-in.git
+git clone https://github.com/leonjacobs-collab/obsiddy-in.git
 ```
 
 Or just download the ZIP and unzip it wherever you like.
